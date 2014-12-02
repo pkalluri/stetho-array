@@ -9,6 +9,7 @@ function signal = ...
     SPEED_OF_SOUND = 340.29; %in m/s
     
     signal = rand([0,2]); %to fill
+%     num = 1;
     
     for currListener = 1:length(listenerSignals) %each sound listener            
         %calculate sound travel time b/w point and this listener
@@ -19,9 +20,10 @@ function signal = ...
         signalToAdd = shiftRight(listenerSignals{currListener}, ...
                                     sampleRate, -1*deltaTime,...
                                     true);
+
 %         plotSignal(signalToAdd ,'black');
-        signal = add(signal, signalToAdd, true);        
+        signal = add(signal, signalToAdd, true);  
+%         num = dotSignals(signal,signalToAdd);  
+
     end
-
-
 end

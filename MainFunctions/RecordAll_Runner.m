@@ -1,6 +1,9 @@
 listeners = getAllStethosAsRecorders(SAMPLE_RATE, SAMPLE_SIZE, NUMBER_OF_CHANNELS);
-blockingSimultaneousRecord(listeners, RECORDING_TIME); %listen
+timeToIgnore = blockingSimultaneousRecord(listeners, RECORDING_TIME); %listen
 listenerSignals = recordersToSignals(listeners);
+% listenerSignals = matchStartTime(listenerSignals, SAMPLE_RATE, timeToIgnore);
+listenerSignals = matchFirstPeak(listenerSignals);
+
 
 if GRAPH_LISTENER_LOCS
     figure();
