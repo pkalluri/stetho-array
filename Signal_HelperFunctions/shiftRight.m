@@ -3,6 +3,7 @@ function shiftedSignal = shiftRight( signal, sampleRate, deltaTime, assumeUnkown
 %shifts the given signal by a number of samples closest to a shift of 
 %the given deltaTime, in seconds.
     deltaSamples = round(deltaTime * sampleRate); %discrete # of samples to shift
+       
     if deltaSamples > 0
         if not(assumeUnkownIsZero)
             y = [
@@ -19,18 +20,21 @@ function shiftedSignal = shiftRight( signal, sampleRate, deltaTime, assumeUnkown
         shiftedSignal = [x, y];
     else %deltaSamples is negative, so shift left by abs value
         deltaSamples_left = abs(deltaSamples);
+        fillSamples = min(deltaSamples_left, length(signal));
         if not(assumeUnkownIsZero)
             y = [
                 signal(deltaSamples_left+1:length(signal),2);
-                NaN([deltaSamples_left 1]) %assume NaN
+                NaN([fillSamples 1]) %assume NaN
                 ];
         else
             y = [
                 signal(deltaSamples_left+1:length(signal),2);
-                zeros([deltaSamples_left 1])
+                zeros([fillSamples 1])
                 ];
         end
-        shiftedSignal = [signal(:,1) y];
+
+        x = (1:length(y))';
+        shiftedSignal = [x, y];
     end
 end
 

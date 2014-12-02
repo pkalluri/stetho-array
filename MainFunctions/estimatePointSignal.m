@@ -1,5 +1,5 @@
 function signal = ...
-    getSignalAtPoint(point, listenerSignals, listenerLocs, sampleRate)
+    estimatePointSignal(point, listenerSignals, listenerLocs, sampleRate)
 %Given listeners' locations and signals,
 %calculate signal at given point.
 % 

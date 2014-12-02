@@ -1,8 +1,8 @@
-function s = startTime( signal )
+function [ s, d ] = t( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-%Assuming >= 1 element
+    s = struct();
+    d = 2.0;
 
-    s = signal(1,1);
 end
 

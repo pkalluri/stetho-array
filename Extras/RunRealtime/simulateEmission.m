@@ -8,7 +8,7 @@ function [ listenerSignals ] = ...
 %A single location matrix has 3 columns: x-coord, y-coord, z-coord
 %A single signal matrix has 2 columns: timestep, sample value
     SPEED_OF_SOUND = 340.29; %in m/s
-    MAX_NOISE = .05;
+    MAX_NOISE = .02;
     
     %cell matrix, for listeners' signals
     listenerSignals = cell([1 size(listenerLocs,1)]);
@@ -23,11 +23,13 @@ function [ listenerSignals ] = ...
             deltaTime = deltaDistance/SPEED_OF_SOUND;
             
             %add noise, shift, and add to listener signal
-            signalToAdd = addNoise(emitterSignals{currEmitter}, MAX_NOISE);
+            signalToAdd = emitterSignals{currEmitter};
             signalToAdd = shiftRight(signalToAdd, ...
                                         sampleRate, deltaTime,...
                                         true);
-            listenerSignal = add(listenerSignal, signalToAdd, false);
+            signalToAdd = addNoise(signalToAdd, MAX_NOISE);
+
+            listenerSignal = add(listenerSignal, signalToAdd, true);
         end
 
         listenerSignals{currListener} = listenerSignal; %save
