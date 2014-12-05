@@ -6,9 +6,11 @@ RECORDING_TIME = 5; %in seconds
 arrayCenter = struct('x', 0, 'y', 0, 'z', 0);
 arrayStepSize = .05715; %in m .28
 LISTENER_LOCS = [         
-                    arrayCenter.x-arrayStepSize/2 arrayCenter.y arrayCenter.z; %left
-                    arrayCenter.x+arrayStepSize/2 arrayCenter.y arrayCenter.z; %right
-                ]; %in m
+                    arrayCenter.x-arrayStepSize/2 arrayCenter.y+arrayStepSize/2 arrayCenter.z; %top left
+                    arrayCenter.x+arrayStepSize/2 arrayCenter.y+arrayStepSize/2 arrayCenter.z; %top right
+                    arrayCenter.x-arrayStepSize/2 arrayCenter.y-arrayStepSize/2 arrayCenter.z; %bottom left
+                    arrayCenter.x+arrayStepSize/2 arrayCenter.y-arrayStepSize/2 arrayCenter.z; %bottom right                
+                 ]; %in m
 GRAPH_LISTENER_SIGNALS = true;
 GRAPH_LISTENER_LOCS = false;
 

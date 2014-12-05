@@ -1,10 +1,24 @@
 listeners = getAllStethosAsRecorders(SAMPLE_RATE, SAMPLE_SIZE, NUMBER_OF_CHANNELS);
-timeToIgnore = blockingSimultaneousRecord(listeners, RECORDING_TIME); %listen
+blockingSimultaneousRecord(listeners, RECORDING_TIME); %listen
 listenerSignals = recordersToSignals(listeners);
-% listenerSignals = matchStartTime(listenerSignals, SAMPLE_RATE, timeToIgnore);
+
+if GRAPH_LISTENER_SIGNALS
+    figure();
+    graphSignals(listenerSignals, LISTENER_COLORS);
+    title('before alignment');
+end
+
+
+% process
 listenerSignals = matchFirstPeak(listenerSignals);
 
+%slide an extra half second to the left, to eliminate leftover noise from
+%calibration tap
+for i = 1:length(listenerSignals)
+   listenerSignals{i} = shiftRight(listenerSignals{i}, SAMPLE_RATE, -.5, true);
+end
 
+% graph
 if GRAPH_LISTENER_LOCS
     figure();
     title('Listener Locations');

@@ -5,7 +5,6 @@ nPointLocs = sizePointLocs(1);
 figure();
 hold on;
 for iPointLoc = 1:nPointLocs;
-    disp(POINT_LOCS(iPointLoc,1:3));
     pointSignal = getSignalAtPoint(POINT_LOCS(iPointLoc,1:3), ...
                                 listenerSignals, LISTENER_LOCS,...
                                 SAMPLE_RATE); %run

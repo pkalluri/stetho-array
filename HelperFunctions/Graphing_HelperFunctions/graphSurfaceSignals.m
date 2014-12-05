@@ -1,7 +1,7 @@
 function graphSurfaceSignals( x,y,z )
 
     pcolor(x,y,z);
-%     shading interp;
+    shading interp;
 
     zlim([-20 20]);
     xlabel('x (m)'); % x-axis label

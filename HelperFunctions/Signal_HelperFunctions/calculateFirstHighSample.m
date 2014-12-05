@@ -5,7 +5,7 @@ function sample = calculateFirstHighSample( signal )
 %     [r , ~] = find(signal == maxValue);
 %     sample = r(1);    
 
-    [r , ~] = find(signal(:,2)>=.3);
+    [r , ~] = find(signal(:,2)>=.8);
     sample = r(1);
 
 end
