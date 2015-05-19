@@ -4,7 +4,7 @@
 % PRIOR
 % % % % % % % % % % % % % % % % 
 Assumed_Constants;  %Load constants
-Simulated_Parameters_4;  %Load parameters
+Parameters;  %Load parameters
 
 % % % % % % % % % % % % % % % %
 % LISTENING
@@ -31,16 +31,12 @@ end
 % ANALYSIS
 % % % % % % % % % % % % % % % % 
 
-%Estimate sound surface, based on signals heard, if indicated desired
+% Estimate sound surface video, based on signals heard, if indicated desired
 if ESTIMATE_SOUND_SURFACE                    
     Estimate_Sound_Surface; 
 end
 
-% if DISPLAY_SOUND_SURFACE %Display signals, if desired                    
-% 	Display_Sound_Surface;
-% end
-
-
-% if ESTIMATE_POINT_SIGNALS
-%     EstimatePoints_Runner; %Estimate sound location, based on recordings
-% end
+%Estimate sound signal at single point, based on signals heard, if desired
+if ESTIMATE_SOUND_AT_POINT
+    EstimatePoints_Runner; 
+end

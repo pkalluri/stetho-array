@@ -20,7 +20,7 @@ LISTENERS_LOCATIONS = [         %X  Y  Z (m)
                    
 RECORDING_DURATION = 1; %(sec)
 
-%FOR DEBUGGING:
+% FOR LIVE VISUALIZING
 % Indicates whether to graph the simulated listeners' locations
 DISPLAY_LISTENERS_LOCATIONS = false;
 
@@ -54,18 +54,19 @@ MAX_NOISE = 0;
 % LISTENING PARAMETERS
 % % % % % % % % % % % % % % % % % % % % % % %
 
+% FOR LIVE VISUALIZING
 % Indicates whether to graph the simulated listeners' signals
-DISPLAY_LISTENERS_SIGNALS = true;
+DISPLAY_LISTENERS_SIGNALS = false;
 
 
 
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % 
-% % PARAMETERS TO SHOW SOUND
+% % PARAMETERS TO ESTIMATE SOUND SURFACE
 % % % % % % % % % % % % % % % % % % % % % % % % 
 
-ESTIMATE_SOUND_SURFACE = true;
+ESTIMATE_SOUND_SURFACE = false;
 SURFACE_SAMPLING_PERIOD = 1; %(m)
 
 % WATCH_SIGNALS = false;
@@ -81,8 +82,14 @@ SURFACE_SAMPLING_PERIOD = 1; %(m)
 % 
 
 
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % 
 % % PARAMETERS TO LOCATE SOUND
-% ESTIMATE_POINT_SIGNALS = false;
+% % % % % % % % % % % % % % % % % % % % % % % % 
+
+ESTIMATE_SOUND_AT_POINT = false;
 % POINT_LOCS = [         
 %                     -.2  0 arrayCenter.z; %left
 %                     .2  0 arrayCenter.z; %left
