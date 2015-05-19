@@ -4,7 +4,7 @@ RECORDING_TIME = 5; %in seconds
 
 % Set listener locations, in order that they are attached
 arrayCenter = struct('x', 0, 'y', 0, 'z', 0);
-arrayStepSize = .05715; %in m .28
+arrayStepSize = .15715; %in m (VERTICAL AND HORIZONTAL DISTANCE FROM ARRAY CENTER)
 LISTENER_LOCS = [         
                     arrayCenter.x-arrayStepSize/2 arrayCenter.y+arrayStepSize/2 arrayCenter.z; %top left
                     arrayCenter.x+arrayStepSize/2 arrayCenter.y+arrayStepSize/2 arrayCenter.z; %top right
@@ -19,13 +19,13 @@ ESTIMATE_SURFACE_SIGNALS = true;
 WATCH_SIGNALS = false;
 SIGNAL_EVALUATION_FUNCTION = @calculateSnr;
 SURFACE_Z_COORDINATE = 0; %in m, relative to center of array
-max_xy = .5; %in m
+max_xy = 50; %in m
 SURFACE_MIN_X = -1*max_xy;
 SURFACE_MAX_X = max_xy;
 SURFACE_MIN_Y = -1*max_xy;
 SURFACE_MAX_Y = max_xy;
-SURFACE_X_STEP = .2*(max_xy*2);
-SURFACE_Y_STEP = .2*(max_xy*2);
+SURFACE_X_STEP = .1*(max_xy*2);
+SURFACE_Y_STEP = .1*(max_xy*2);
 
 % Point signal estimation
 ESTIMATE_POINT_SIGNALS = false;
