@@ -1,0 +1,18 @@
+
+CODE OVERVIEW
+
+The SoundReconstruction directory contains all code necessary to run the 
+main program. The user shoud
+    - Update the PARAMETERS file
+        to reflect a physical system including signal emitters and listeners
+    - Run the RUNNER file
+        This will load the user-given parameters and model the implied physical
+        system including signal emitters and listeners.
+        Then, forgetting all known emitter information, it will attempt to
+        reconstruct the emitter information from only listeners' information.
+All matrix data representations are documented in the code.
+        
+The _Miscelaneous_ directory is currently a smorgasborg of code that is 
+potentially useful in next steps, but is not incorporated into the
+current program. It should be cleaned up shortly.
+        

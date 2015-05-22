@@ -1,0 +1,28 @@
+
+ASCUL-ARRAY
+
+@Pratyusha Priya Kalluri | pkalluri[at]mit.edu
+Camera Culture Group, MIT Media Lab
+
+
+Ascultation relies on external measurement of signals within the body to detect
+and understand internal anomalies, and diagnose and treat patients.
+The stethoscope is the primary tool for ascultation, but many doctors,
+including the clinician mentor I worked with, state the process of ascultation via
+traditional stethoscope has not seen significant innovation in many years.
+
+I propose that multi-stethoscope arrays are a potential avenue to innovation
+in ascultation. Smart signal processing comparing signal information
+across an array could allow faster, higher precision, or more successful
+triangulation and tracking of the location and paths of sounds/signals in
+the body. Multi-stethoscope arrays will require thoughtfully-designed,
+efficient signal processing algorithms to (1) Provide proof of concept,
+(2) Understand constraints/scope of such a device, (3) Understand important
+optimizations, and (4) Implement the final device. 
+
+The program included here emphasizes (1), and sets up a foundation for (2) & (3).
+In particular, it provides computational evidence that 
+self-positioned arrays of listeners can facilitate successful, precise
+reconstruction, localization, and visualization of paths of otherwise unknown
+signals -- and does so through parametrizable code that allows exploration of
+device constraints/optimizations.
