@@ -1,14 +1,5 @@
 % RUNNER
-% The purpose of this program is to demonstrate the possibility that
-% self-positioned arrays of listeners can facilitate successful, precise
-% reconstruction, localization, and visualization of paths of otherwise
-% unknown signals.
-% 
-% In order to show this
-% To simulate reconstruction, this script giv
-% then reconstructs sound localizations (& visualizations).
-% Resolution of reconstruction is determined by the provided parameters file.
-
+% After finished updating PARAMETERS, run this script to begin the program.
 
 % % % % % % % % % % % % % % % %
 % LOAD NECESSARY INFORMATION INTO WORKSPACE
@@ -17,10 +8,11 @@ CONSTANTS;  %Constants assumed by this program
 PARAMETERS;  %Parameters provided by the user
 
             
+
 % % % % % % % % % % % % % % % %
-% DISPLAY PHYSICAL SYSTEM
+% DIAGRAM PHYSICAL SYSTEM
 % % % % % % % % % % % % % % % %
-if DISPLAY_LISTENERS_LOCATIONS 
+if DISPLAY_LOCATIONS 
     fig_system = figure('OuterPosition', [0, 0, 400, 900]);
     fig_system.Name = 'Physical System';
     graphLocations(LISTENERS_LOCATIONS, LISTENERS_COLOR, ...
@@ -33,22 +25,21 @@ end
 
 
 % % % % % % % % % % % % % % % %
-% SIMULATE SIGNALS
+% SIMULATE RESULTING SIGNALS
 % % % % % % % % % % % % % % % %
-% Simulate listeners' signals
 sound_emitter_signal = generateEmitterSignalGivenOneEmission( ...
                                 RECORDING_DURATION, ... %(sec)
                                 SAMPLING_RATE, ...      %(Hz)
                                 SOUND_EMITTER_TIMESTAMP ... %sound time(sec)
                                 );
 Simulate_Listeners_Signals_Given_One_Emission;
+% TODO: Some code is duplicated in above 2 calls. Remove duplication for
+% performance enhancement.
 
 
 
-% % % % % % % % % % % % % % % %
-% DISPLAY SIGNALS DETECTED
-% % % % % % % % % % % % % % % %  
-if DISPLAY_LISTENERS_SIGNALS     
+% DISPLAY RESULTING SIGNALS
+if DISPLAY_SIGNALS     
     fig_signals = figure('Position', [400, 0, 300, 900]);
     fig_signals.Name = 'Signals';
     
