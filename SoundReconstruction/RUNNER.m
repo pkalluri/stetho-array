@@ -7,7 +7,6 @@
 CONSTANTS;  %Constants assumed by this program
 PARAMETERS;  %Parameters provided by the user
 
-            
 
 % % % % % % % % % % % % % % % %
 % DIAGRAM PHYSICAL SYSTEM
@@ -15,8 +14,12 @@ PARAMETERS;  %Parameters provided by the user
 if DISPLAY_LOCATIONS 
     fig_system = figure('OuterPosition', [0, 0, 400, 900]);
     fig_system.Name = 'Physical System';
-    graphLocations(LISTENERS_LOCATIONS, LISTENERS_COLOR, ...
+    if SIMULATION
+        graphEmitterLocation( ...
                    SOUND_EMITTER_LOCATION, SOUND_EMITTER_COLOR, ...
+                    SURFACE_WIDTH, SURFACE_HEIGHT);
+    end
+    graphListenersLocations(LISTENERS_LOCATIONS, LISTENERS_COLOR, ...
                     SURFACE_WIDTH, SURFACE_HEIGHT);
 end
 
@@ -25,17 +28,30 @@ end
 
 
 % % % % % % % % % % % % % % % %
-% SIMULATE RESULTING SIGNALS
+% GET RESULTING SIGNALS
 % % % % % % % % % % % % % % % %
-sound_emitter_signal = generateEmitterSignalGivenOneEmission( ...
-                                RECORDING_DURATION, ... %(sec)
-                                SAMPLING_RATE, ...      %(Hz)
-                                SOUND_EMITTER_TIMESTAMP ... %sound time(sec)
-                                );
-Simulate_Listeners_Signals_Given_One_Emission;
-% TODO: Some code is duplicated in above 2 calls. Remove duplication for
-% performance enhancement.
 
+if SIMULATION
+    sound_emitter_signal = generateEmitterSignalGivenOneEmission( ...
+                                    RECORDING_DURATION, ... %(sec)
+                                    SAMPLING_RATE, ...      %(Hz)
+                                    SOUND_EMITTER_TIMESTAMP ... %sound time(sec)
+                                    );
+    listeners_signals = simulateListenersSignalsGivenOneEmission( ...
+                            LISTENERS_LOCATIONS, ...        (m)
+                            RECORDING_DURATION, ...         (sec)
+                            SAMPLING_RATE, ...              (Hz)
+                            ...
+                            SOUND_EMITTER_TIMESTAMP, ...    (sec)
+                            SOUND_EMITTER_LOCATION, ...     (m)
+                            SPEED_OF_SOUND, ...             (m/sec)
+                            MAX_NOISE ...
+                        );
+    % TODO: Some code is duplicated in above 2 calls. Remove duplication for
+    % performance enhancement.
+else %not simulation
+	RecordAll_Runner;
+end
 
 
 % DISPLAY RESULTING SIGNALS
@@ -46,9 +62,14 @@ if DISPLAY_SIGNALS
     hold on;
     title('Signal created by Emitter and Heard by Listeners');
     
-    num_plots = length(listeners_signals) + 1; %1 emitter
-    graphEmitterSignal(sound_emitter_signal, SOUND_EMITTER_COLOR, num_plots);
-    graphSignals(listeners_signals, LISTENERS_COLOR, num_plots);
+    if SIMULATION
+        num_plots = length(listeners_signals) + 1; %1 emitter
+        graphEmitterSignal(sound_emitter_signal, SOUND_EMITTER_COLOR, num_plots);
+        graphSignals(listeners_signals, LISTENERS_COLOR, num_plots, 1);
+    else
+        num_plots = length(listeners_signals);
+        graphSignals(listeners_signals, LISTENERS_COLOR, num_plots, 0);
+    end
 end
 
 

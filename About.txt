@@ -23,8 +23,8 @@ efficient signal processing algorithms to (1) Provide proof of concept,
 (2) Understand constraints/scope on such a device, (3) Understand important
 optimizations, and (4) Implement the final device. 
 
-The program included here emphasizes (1), and creates the foundation for 
-(2) (3) and (4).
+The program included here emphasizes (1), also implementing (4). Its
+flexible, parametrizable code makes it useful in exploring (2) and (3).
 
 
 --ABOUT THIS PROGRAM--
@@ -33,19 +33,17 @@ self-positioned arrays of listeners can facilitate successful, precise
 reconstruction, localization, and visualization of otherwise
 unknown signals.
 
-Specifically, this program uses user-inputted sound-emitters (plotted in red)
-to simulate listeners' data (plotted in black), then uses listeners' data
-alone to successfully recontruct sound-emitters. This shows potential use
-for the proposed ASCUL-ARRAYS -- and, via adjustable parameters, allows
-further exploration of device constraints/optimizations.
+Specifically, this program uses (a) user-inputted sound-emitters (plotted in red)
+to simulate listeners' data (plotted in black) or (b) uses user-inputted +
+live-recorded listeners' data (also plotted in black), then uses this listeners' data
+alone to successfully recontruct sound-emitters.
 
 All matrix data representations and other design decisions are documented
 within the code.
 
 
 --HOW TO RUN THIS PROGRAM--
-Set the PARAMETERS file to reflect the desired physical system (including 
-emitter and listeners), then run the RUNNER script.
+Set the PARAMETERS file, then run the RUNNER script.
 
 
 --ABOUT THE ORGANIZATION OF THIS PACKAGE--
