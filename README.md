@@ -5,6 +5,7 @@ stetho-array (ascul-array) project
 Camera Culture Group, MIT Media Lab
 
 --ABOUT THE PROBLEM BEING ADDRESSSED--
+
 AscultAtion relies on external measurement of signals within the body to detect
 and understand internal anomalies. The aim is to diagnose and treat patients quickly 
 and non-invasively. The stethoscope is the primary tool for ascultation,
@@ -28,6 +29,7 @@ flexible, parametrizable code makes it useful in exploring (2) and (3).
 
 
 --ABOUT THIS PROGRAM--
+
 The direct purpose of this program is to demonstrate that
 self-positioned arrays of listeners can facilitate successful, precise
 reconstruction, localization, and visualization of otherwise
@@ -43,10 +45,12 @@ within the code.
 
 
 --HOW TO RUN THIS PROGRAM--
+
 Set the PARAMETERS file, then run the RUNNER script.
 
 
 --ABOUT THE ORGANIZATION OF THIS PACKAGE--
+
 The SoundReconstruction directory contains all code necessary to run the 
 Sound Reconstruction program.
         
